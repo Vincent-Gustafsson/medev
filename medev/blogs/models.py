@@ -1,15 +1,28 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+from autoslug import AutoSlugField
 
 from core.models import BaseModel
+
+
+User = get_user_model()
 
 
 class Post(BaseModel):
     title = models.CharField(max_length=50, blank=False)
     content = models.TextField(blank=False)
-    thumbnail = models.ImageField(upload_to='blogs/posts/thumbnail')
+
+    slug = AutoSlugField(
+        null=True,
+        default=None,
+        unique=True,
+        populate_from='title',
+        always_update=True
+    )
 
     author = models.ForeignKey(
-        'User',
+        User,
         related_name='posts',
         on_delete=models.CASCADE
     )

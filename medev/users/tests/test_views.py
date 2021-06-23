@@ -1,10 +1,12 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.core import mail
+from django.contrib.auth import get_user_model
 
 from rest_framework.authtoken.models import Token
 
-from ..models import User
+
+User = get_user_model()
 
 
 class TestRegistration(TestCase):
@@ -25,7 +27,7 @@ class TestRegistration(TestCase):
         }
 
     def test_can_register(self):
-        """ Can register with valid data """
+        """ Registers user with valid data """
 
         response = self.client.post(reverse('rest_register'), self.test_data)
 

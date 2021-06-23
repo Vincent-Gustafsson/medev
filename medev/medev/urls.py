@@ -32,5 +32,6 @@ auth_urls = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include(auth_urls))
+    path('auth/', include(auth_urls)),
+    path('api/', include('blogs.urls'))
 ]

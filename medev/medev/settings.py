@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'dj_rest_auth.registration',
 
-    'users'
+    'core',
+    'users',
+    'blogs'
 ]
 
 MIDDLEWARE = [

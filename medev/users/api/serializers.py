@@ -9,6 +9,16 @@ from rest_framework.exceptions import ValidationError
 from ..models import User
 
 
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'first_name',
+            'last_name',
+        )
+
+
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
